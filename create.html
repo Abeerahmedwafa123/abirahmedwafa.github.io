@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Abir Ahmed Aly Wafa – Executive Digital CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <style>
+    :root {
+      --metallic-blue: #0b2540;
+      --metallic-blue-light: #2f7fd3;
+      --blue-soft: #132a4a;
+      --blue-deep: #020814;
+      --gold-dark: #a67c00;
+      --gold-light: #ffd777;
+      --gold-glow: #ffecb3;
+      --text-main: #f6f8fc;
+      --text-muted: #c7cfdd;
+      --panel-bg: #050c18;
+      --cv-bg: #01050a;
+      --smooth: 0.3s ease;
+      --font-large: 1.1rem;
+      --font-xlarge: 2.1rem;
+      --radius: 20px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #102345, #020513 55%, #000207);
+      color: var(--text-main);
+      padding: 40px 14px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .cv-shell {
+      width: 100%;
+      max-width: 1100px;
+      background: linear-gradient(145deg, #020813, #01040b);
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.05);
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      animation: fadeSlideIn 1s ease forwards;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    @keyframes fadeSlideIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cv-strip {
+      height: 10px;
+      background: linear-gradient(90deg, var(--metallic-blue), var(--metallic-blue-light), var(--metallic-blue));
+      box-shadow: 0 0 20px rgba(47,127,211,0.8);
+    }
+
+    .cv-header {
+      display: flex;
+      gap: 26px;
+      padding: 35px;
+      align-items: center;
+      background: linear-gradient(
+        135deg,
+        rgba(47,127,211,0.18),
+        rgba(6,15,34,0.9) 60%
+      );
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+    }
+
+    .profile-img-wrapper {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      padding: 4px;
+      background: conic-gradient(
+        from 180deg,
+        var(--gold-light),
+        var(--gold-dark),
+        var(--gold-light)
+      );
+      box-shadow: 0 0 30px rgba(255,215,119,0.5);
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--cv-bg);
+    }
+
+    .header-main { flex: 1; min-width: 240px; }
+
+    .name-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .header-main .name {
+      font-size: var(--font-xlarge);
+      font-weight: 700;
+      background: linear-gradient(180deg, var(--gold-light), var(--gold-dark));
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .explore-badge {
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, var(--gold-light), var(--gold-dark));
+      color: #1b1402;
+      box-shadow:
+        0 0 10px rgba(255,215,119,0.7),
+        0 0 25px rgba(255,215,119,0.4);
+      border: 1px solid rgba(255,239,198,0.9);
+      white-space: nowrap;
+      animation: floatBadge 3s ease-in-out infinite;
+    }
+
+    @keyframes floatBadge {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .role-tagline {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      line-height: 1.4;
+    }
+
+    .chip {
+      padding: 7px 16px;
+      font-size: 0.85rem;
+      background: rgba(10,35,75,0.7);
+      border: 1px solid rgba(47,127,211,0.8);
+      border-radius: 50px;
+      color: #d5e9ff;
+    }
+
+    .cv-body {
+      display: grid;
+      grid-template-columns: 2fr 1.3fr;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    @media(max-width: 860px){
+      .cv-body { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: radial-gradient(circle at top left, #071426, var(--panel-bg));
+      border: 1px solid rgba(125,159,211,0.4);
+      margin-bottom: 18px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.75);
+    }
+
+    .panel-header {
+      padding: 14px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(
+        135deg,
+        rgba(255,215,119,0.18),
+        rgba(11,37,64,0.7)
+      );
+      color: var(--gold-light);
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .panel-toggle { transition: 0.3s; }
+    .panel-header.active .panel-toggle { transform: rotate(90deg); }
+
+    .panel-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease;
+    }
+
+    .panel-content-inner {
+      padding: 15px 22px;
+      font-size: var(--font-large);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .entry-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--gold-light);
+    }
+
+    ul { margin-top: 6px; padding-left: 20px; }
+    ul li { margin-bottom: 6px; }
+
+    .sample-link {
+      display: inline-block;
+      padding: 8px 18px;
+      margin: 6px 0 10px 0;
+      border-radius: 999px;
+      border: 2px solid var(--gold-light);
+      text-decoration: none;
+      color: var(--gold-light);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      box-shadow:
+        0 0 8px rgba(255,215,119,0.7),
+        0 0 18px rgba(255,215,119,0.4);
+      background: rgba(2,7,20,0.95);
+    }
+
+    .preview-frame {
+      margin-top: 10px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,215,119,0.35);
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
+    }
+
+    .preview-frame iframe {
+      width: 100%;
+      height: 360px;
+      border: none;
+      background: #000;
+    }
+
+    @media (max-width: 600px) {
+      .preview-frame iframe { height: 280px; }
+    }
+
+    footer {
+      padding: 20px;
+      font-size: 0.9rem;
+      text-align: right;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+
+
+<body>
+<div class="cv-shell">
+
+  <div class="cv-strip"></div>
+
+  <!-- HEADER -->
+  <header class="cv-header">
+    <div class="profile-img-wrapper">
+      <img class="profile-img"
+        src="https://raw.githubusercontent.com/Abeerahmedwafa123/Global-Voices/main/Instructor%27s%20Photo.jpeg"
+        alt="Abir Ahmed Aly Wafa Profile Photo"/>
+    </div>
+
+    <div class="header-main">
+      <div class="name-row">
+        <div class="name">Abir Ahmed Aly Wafa</div>
+        <div class="explore-badge">Explore My Work</div>
+      </div>
+
+      <div class="role-tagline">
+        Head of EdTech & Instructional Design • Assistant Principal • CELTA Tutor • AI Trainer • EdTech Innovator
+      </div>
+
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+        <span class="chip">AI in Education</span>
+        <span class="chip">Instructional Design</span>
+        <span class="chip">Digital Transformation</span>
+        <span class="chip">CEFR · PYP · IGCSE</span>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="cv-body">
+
+    <!-- LEFT COLUMN -->
+    <section>
+
+      <!-- SUMMARY -->
+      <article class="panel">
+        <div class="panel-header active">
+          <span>Professional Summary</span>
+          <span class="panel-toggle">›</span>
+        </div>
+        <div class="panel-content" style="max-height:520px;">
+          <div class="panel-content-inner">
+            <ul>
+              <li>Educational leader, EdTech specialist, instructional designer, and Certified AI Trainer with 20+ years of experience across Egypt and Kuwait.</li>
+              <li>CELTA-certified English teacher and IB PYP educator with a strong track record in teaching, teacher training, and academic leadership.</li>
+              <li>Highly skilled in AI integration, digital transformation, curriculum design, and professional development.</li>
+              <li>Recognized for building technology-enhanced learning ecosystems and modernizing instructional practices.</li>
+              <li>Currently serving as Head of Educational Technology & Instructional Design.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- EXPERIENCE -->
+      <article class="panel">
+        <div class="panel-header">
+          <span>Professional Experience</span>
+          <span class="panel-toggle">›</span>
+        </div>
+        <div class="panel-content">
+          <div class="panel-content-inner">
+
+            <!-- Head of EdTech -->
+            <div class="entry-title">Head of Educational Technology & Instructional Design – Monglish International Academy / Edulixa (Nov 2025 – Present)</div>
+            <ul>
+              <li>Lead AI adoption and digital transformation across academic streams.</li>
+              <li>Design AI-driven PD frameworks and training programs for teachers.</li>
+              <li>Oversee the modernization of instructional materials and digital ecosystems.</li>
+              <li>Align EdTech strategy with school improvement and learner outcomes.</li>
+            </ul>
+
+            <br>
+
+            <!-- Assistant Principal -->
+            <div class="entry-title">Assistant Principal & Head of Planning – Monglish International Academy (Nov 2024 – Nov 2025)</div>
+            <ul>
+              <li>Led lesson observations and provided actionable, improvement-focused feedback.</li>
+              <li>Implemented personalized teacher development and coaching plans.</li>
+              <li>Delivered PD workshops on student-centred, tech-enhanced teaching strategies.</li>
+              <li>Trained teachers to use coaching methods to reduce learners’ affective barriers and build speaking confidence.</li>
+            </ul>
+
+            <br>
+
+            <!-- IGCSE -->
+            <div class="entry-title">English Teacher (IGCSE) – Salahaldin International School (Nov 2021 – Nov 2024)</div>
+            <ul>
+              <li>Taught Cambridge IGCSE English 0058 using interactive, inquiry-based approaches.</li>
+              <li>Designed differentiated, AI-supported learning activities and assessments.</li>
+              <li>Facilitated CPD on digital tools and AI integration for colleagues.</li>
+            </ul>
+
+            <br>
+
+            <!-- CEFR – Kuwait MOE -->
+            <div class="entry-title">English Teacher – CEFR Framework – Ministry of Education, State of Kuwait</div>
+            <ul>
+              <li>Delivered structured CEFR-based instruction across multiple proficiency levels.</li>
+              <li>Supported learner progression with targeted speaking, reading, listening, and writing tasks.</li>
+              <li>Granted the Creative Teaching Award for creating an interactive digital book teaching diphthongs and consonant clusters.</li>
+            </ul>
+
+            <br>
+
+            <!-- Head of English Dept – Global Teaching -->
+            <div class="entry-title">Head of English Dept – Private Institution – Global Teaching (Aug 2004 – Sep 2021)</div>
+            <ul>
+              <li>Provided academic leadership and strategic direction for the English department.</li>
+              <li>Supervised curriculum delivery and conducted teacher mentoring and coaching.</li>
+              <li>Introduced modern methodologies and EdTech tools to improve learning outcomes.</li>
+            </ul>
+
+          </div>
+        </div>
+      </article>
+
+
+      <!-- PROJECTS & ACHIEVEMENTS -->
+      <article class="panel">
+        <div class="panel-header">
+          <span>Projects & Key Achievements</span>
+          <span class="panel-toggle">›</span>
+        </div>
+        <div class="panel-content">
+          <div class="panel-content-inner">
+            <ul>
+              <li>Developed AI-powered speaking platforms aligned with CEFR and SDGs.</li>
+              <li>Created digital lesson planners for IB PYP and CELTA programs.</li>
+              <li>Built Business English shadowing and speaking applications for professionals.</li>
+              <li>Winner of a Creative Teaching Award for innovative phonics and digital literacy resources.</li>
+              <li>Authored interactive digital books and 10+ story-based AI learning experiences.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- DIGITAL PLANNERS & APPS -->
+      <article class="panel">
+        <div class="panel-header">
+          <span>Digital Lesson Planners & AI Apps – Samples</span>
+          <span class="panel-toggle">›</span>
+        </div>
+        <div class="panel-content">
+          <div class="panel-content-inner">
+
+            <!-- IB Planner -->
+            <div class="entry-title">Digital IB Lesson Planner – Sample Work</div>
+            <a
+              class="sample-link"
+              href="https://ib-pyp-ai-lesson-planner-218926259575.us-west1.run.app"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open IB Planner
+            </a>
+            <div class="preview-frame">
+              <iframe
+                src="https://ib-pyp-ai-lesson-planner-218926259575.us-west1.run.app"
+                loading="lazy"
+                title="Digital IB Lesson Planner Preview">
+              </iframe>
+            </div>
+
+            <br><br>
+
+            <!-- CELTA Planner -->
+            <div class="entry-title">Digital CELTA Lesson Planner – Sample Work</div>
+            <a
+              class="sample-link"
+              href="https://celta-digital-lesson-planner-16729647371.us-west1.run.app"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open CELTA Planner
+            </a>
+            <div class="preview-frame">
+              <iframe
+                src="https://celta-digital-lesson-planner-16729647371.us-west1.run.app"
+                loading="lazy"
+                title="Digital CELTA Lesson Planner Preview">
+              </iframe>
+            </div>
+
+            <br><br>
+
+            <!-- Business Speaking App -->
+            <div class="entry-title">Digital Business Speaking App – Sample Work</div>
+            <a
+              class="sample-link"
+              href="https://business-result-shadowing-613727655061.us-west1.run.app"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open Business Speaking App
+            </a>
+            <div class="preview-frame">
+              <iframe
+                src="https://business-result-shadowing-613727655061.us-west1.run.app"
+                loading="lazy"
+                title="Digital Business Speaking App Preview">
+              </iframe>
+            </div>
+
+            <br><br>
+
+            <!-- Harry Potter CV Game -->
+            <div class="entry-title">Check My Harry Potter CV Map – Interactive Experience</div>
+            <a
+              class="sample-link"
+              href="https://abeerahmedwafa123.github.io/CV-game.github.io/"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open Interactive CV Game
+            </a>
+            <div class="preview-frame">
+              <iframe
+                src="https://abeerahmedwafa123.github.io/CV-game.github.io/"
+                loading="lazy"
+                title="Harry Potter CV Game Preview">
+              </iframe>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+
+    <!-- RIGHT COLUMN -->
+    <section>
+
+      <!-- CORE COMPETENCIES -->
+      <article class="panel">
+        <div class="panel-header">
+          <span>Core Competencies</span>
+          <span class="panel-toggle">›</span>
+        </div>
+        <div class="panel-content">
+          <div class="panel-content-inner">
+            <ul>
+              <li>AI Integration & Digital Transformation</li>
+              <li>Educational Leadership & Strategic Planning</li>
+              <li>Instructional Design & Curriculum Development</li>
+              <li>Teacher Training, Coaching & Mentoring</li>
+              <li>Assessment Design, QA & Data-Informed Instruction</li>
+              <li>CEFR, IB PYP & IGCSE Frameworks</li>
+              <li>EdTech Tools, Platforms & Analytics</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- EDUCATION -->
+      <article class="panel">
+        <div class="panel-header">
+          <span>Education</span>
+          <span class="panel-toggle">›</span>
+        </div>
+        <div class="panel-content">
+          <div class="panel-content-inner">
+            <ul>
+              <li>Master of Business & Management – R.B College (In Progress, 2025–2026)</li>
+              <li>B.A. English Language – Ain Shams University</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- CERTIFICATIONS -->
+      <article class="panel">
+        <div class="panel-header">
+          <span>Certifications</span>
+          <span class="panel-toggle">›</span>
+        </div>
+        <div class="panel-content">
+          <div class="panel-content-inner">
+            <ul>
+              <li>CELTA – Cambridge University</li>
+              <li>Certified AI Trainer – Edulixa</li>
+              <li>IB PYP Program Workshop Series – Notting Hill College</li>
+              <li>Creative Instructional Designer Diploma</li>
+              <li>CATBIS Advanced Teaching Techniques – Nottingham College</li>
+              <li>Artificial Intelligence in Education – Teach-O-Gen</li>
+              <li>Cambridge Primary Checkpoint CPD</li>
+              <li>IELTS – British Council</li>
+              <li>TKT – Cambridge University</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- LANGUAGES -->
+      <article class="panel">
+        <div class="panel-header">
+          <span>Languages</span>
+          <span class="panel-toggle">›</span>
+        </div>
+        <div class="panel-content">
+          <div class="panel-content-inner">
+            <ul>
+              <li>English – Fluent</li>
+              <li>Arabic – Native</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    Executive Digital CV © <span id="year"></span> • Abir Ahmed Aly Wafa
+  </footer>
+
+</div>
+
+<script>
+  const headers = document.querySelectorAll(".panel-header");
+  headers.forEach(header => {
+    const content = header.nextElementSibling;
+
+    header.addEventListener("click", () => {
+      const active = header.classList.contains("active");
+      headers.forEach(h => {
+        h.classList.remove("active");
+        h.nextElementSibling.style.maxHeight = null;
+      });
+      if (!active) {
+        header.classList.add("active");
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
